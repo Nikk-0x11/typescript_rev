@@ -77,6 +77,20 @@ For programs to be useful, we need to be able to work with some of the simplest 
 - boolean
   - true, false (just these two, no "truthy" or "falsy" values)
 
+- object
+  - {age: 30} (Any JavaScript object, more specific types (type of object) are possible)
+
+- array
+  - [1, 2, 3] (Any JavaScript array, type can be flexible or strict (regarding the element types))
+
+- tuple
+  - [1, 2] (An array but a fixed length array)
+
+- enum
+  - enum {NEW, OLD} (Added by typescript: automatically enumerated global constant identifiers)
+
+- any
+  - * (Any kind of value, no specific type assignment)
 ```
 
 > The key difference between JS and TS is that JavaScript uses "dynamic types" (resolved at runtime), TypeScript uses "static types" (set during development)
@@ -102,22 +116,126 @@ console.log(num);
 **example program:**
 
 ```ts
-function add(n1: number, n2: number, printType: boolean, phrase: string) {
-  // if (typeof n1 !== 'number' && typeof n2 !== 'number') {
-  //   throw new Error("Invalid Input!")
-  // }
-  const res = n1 + n2;
-  if (printType === true) {
-    console.log(phrase + res);
-  } else {
-    return n1 + n2;
-  }
+var n: number = 20;
+var s: string = "Joe";
+var b: boolean = true;
+
+if (b === true) {
+  console.log(`name ${s}, age ${n}`);
+}
+```
+
+**example number type:**
+
+```ts
+let n: number;
+n = 20;
+console.log(n);
+```
+
+**example string type:**
+
+```ts
+let s: string;
+s = "hello";
+console.log(s);
+```
+
+**example boolean type:**
+
+```ts
+let b: boolean;
+b = true;
+console.log(b);
+```
+
+**example object type:**
+
+```ts
+const person: {
+  name: string;
+  age: number;
+} = {
+  // const person = {
+  name: "Joe",
+  age: 20,
+};
+
+console.log(`name: ${person.name}, age: ${person.age}`);
+```
+
+**example array type:**
+
+```ts
+let users: Array<string>;
+users = ["User 1", "User 2", "User 3"];
+
+let userId: Array<string>;
+userId = [1, 2, 3];
+
+console.log(users);
+console.log(userId);
+```
+
+**example tuple type:**
+
+```ts
+var userId: number = 1;
+var userName: string = "Joe";
+
+var userData: [number, string] = [userId, userName];
+
+console.log(userData);
+```
+
+**example enum type:**
+
+```ts
+enum Role {
+  ADMIN = 5,
+  READ_AND_WRITE = "READ_AND_WRITE",
+  READ_ONLY = 10,
 }
 
-const num1 = 17;
-const num2 = 13.4;
-const printResult = true;
-const resultPhrase = "the result is: ";
+const person: {
+  name: string;
+  age: number;
+  hobbies: string[];
+  role: number;
+} = {
+  // const person = {
+  name: "Joe",
+  age: 20,
+  hobbies: ["Coding", "Gaming", "Music"],
+  role: Role.READ_ONLY,
+};
 
-add(num1, num2, printResult, resultPhrase);
+if (person.role === Role.READ_ONLY) {
+  console.log("read only user!");
+}
+```
+
+**example union type:**
+
+```ts
+let code: string | number;
+code = 123; // OK
+code = "ABC"; // OK
+code = false; // Compiler Error
+
+let empId: string | number;
+empId = 111; // OK
+empId = "E111"; // OK
+empId = true; // Compiler Error
+```
+
+**example alias type:**
+
+```ts
+type inputCondition = number | string;
+
+let id: inputCondition = 1;
+let name: inputCondition = "Joe";
+
+console.log(id, name);
 ```

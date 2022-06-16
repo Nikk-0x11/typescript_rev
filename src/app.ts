@@ -1,18 +1,32 @@
-function add(n1: number, n2: number, printType: boolean, phrase: string) {
-  // if (typeof n1 !== 'number' && typeof n2 !== 'number') {
-  //   throw new Error("Invalid Input!")
-  // }
-  const res = n1 + n2
-  if (printType === true) {
-    console.log(phrase + res)
+type combinable = number | string;
+type conversionFormat = 'as-number' | 'as-text';
+
+function combine(
+  input1: combinable, 
+  input2: combinable,
+  resultConversion: conversionFormat
+  ) {
+  
+  let result;
+  if (typeof input1 === "number" && typeof input2 === "number" || resultConversion === "as-number") {
+    result = +input1 + +input2;
   } else {
-    return n1 + n2;
+    result = input1.toString() + input2.toString()
   }
+  return result;
+
+  // if (resultConversion === "as-number") {
+  //   return +result;
+  // } else {
+  //   return result.toString()
+  // }
 }
 
-const num1 = 17;
-const num2 = 13.4
-const printResult = true
-const resultPhrase = "the result is: "
+const combinedNums = combine(10, 20, "as-number")
+console.log(combinedNums)
 
-add(num1, num2, printResult, resultPhrase)
+const combinedStringNum = combine('10', '20', "as-text")
+console.log(combinedStringNum)
+
+const combinedString = combine("hello", "world", "as-text")
+console.log(combinedString)

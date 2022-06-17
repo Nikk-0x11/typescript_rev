@@ -302,3 +302,19 @@ function generateError(message: string, code: number): never {
 
 generateError("An Error Occurred!", 500);
 ```
+
+---
+
+### TypeScript Watch Mode
+
+watch mode simply saved and re-compiles our typescript source file automatically. To use watch mode
+
+```
+tsc filename.ts -w
+```
+
+or
+
+```
+tsc filename.ts --watch
+```

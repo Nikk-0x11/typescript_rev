@@ -318,3 +318,15 @@ or
 ```
 tsc filename.ts --watch
 ```
+
+---
+
+### Compiling whole project
+
+To compile all typescript files in our project (handle whole ts files in project). we can run
+
+```
+tsc --init
+```
+
+and after that we can just simply run `tsc` command to compile all ts files in our project folder
